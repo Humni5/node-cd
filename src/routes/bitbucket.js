@@ -62,10 +62,14 @@ Bitbucket.prototype.post = function (req, res) {
 
 var myExec = function (line) {
   var exec = require('child_process').exec
-  var execCallback = function (error) {
+  var execCallback = function (error, stdout, stderr) {
     if (error !== null) {
       console.log('exec error: ' + error)
     }
+
+    console.log('stdout: ' + stdout)
+    console.log('stderr: ' + stderr)
+    console.log('exec finished')
   }
   exec(line, execCallback)
 }
