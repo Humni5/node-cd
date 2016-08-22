@@ -53,14 +53,14 @@ Bitbucket.prototype.post = function (req, res) {
 
   if (commitsFromBranch.length > 0) {
     console.log('Executing bash file...')
-    myExec(config.action.exec.bitbucket)
+    myExec(config.action.exec.bitbucket, req.body.repository.name)
   }
 
   res.writeHead(200)
   res.end()
 }
 
-var myExec = function (line) {
+var myExec = function (line, repo) {
   var exec = require('child_process').exec
   var execCallback = function (error, stdout, stderr) {
     if (error !== null) {
@@ -71,5 +71,5 @@ var myExec = function (line) {
     console.log('stderr: ' + stderr)
     console.log('exec finished')
   }
-  exec(line, execCallback)
+  exec(line, repo, execCallback)
 }
