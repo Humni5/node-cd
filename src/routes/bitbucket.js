@@ -52,7 +52,7 @@ Bitbucket.prototype.post = function (req, res) {
   })
 
   if (commitsFromBranch.length > 0) {
-    console.log('Executing bash file...')
+    console.log('Executing bash file for repository "' + req.body.repository.name + '"...')
     myExec(config.action.exec.bitbucket, req.body.repository.name)
   }
 
