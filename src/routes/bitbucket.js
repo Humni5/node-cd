@@ -71,5 +71,5 @@ var myExec = function (line, repo) {
     console.log('stderr: ' + stderr)
     console.log('exec finished')
   }
-  exec(line, repo, execCallback)
+  exec(line + " " + repo, execCallback)
 }
